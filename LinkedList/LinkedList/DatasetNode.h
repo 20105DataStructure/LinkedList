@@ -1,5 +1,4 @@
-/*#include <string>
-//Lninklist
+#include <string>
 using namespace std;
 class DatasetNode {
 public:
@@ -11,8 +10,6 @@ public:
 	string* genres;
 	DatasetNode* next;
 public:
-
-
 	DatasetNode(string code, string Type, string Title, int YYYY, int mins, string* genres) {
 		this->tconst = code;
 		this->titleType = Type;
@@ -22,6 +19,4 @@ public:
 		this->genres = genres;
 		this->next = NULL;
 	}
-
-
-};*/
+};
