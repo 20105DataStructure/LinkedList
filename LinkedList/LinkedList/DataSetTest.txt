@@ -1,0 +1,5 @@
+tt0001006	short	Primera carrera internacional de automviles 'Pea-Rhin'	1909	10	Short
+tt0001007	movie	La primera y segunda casetas	1909	\N	\N
+tt0001008	short	The Prince and the Pauper	1909	\N	Short
+tt0001009	short	"Princess Nicotine; or, The Smoke Fairy"	1909	5	"Comedy,Fantasy,Short"
+tt0001010	movie	Proteccin de un convoy de vveres en el puente de camellos	1909	\N	\N

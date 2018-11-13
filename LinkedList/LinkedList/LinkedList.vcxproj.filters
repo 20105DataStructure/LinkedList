@@ -15,8 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DatasetList.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DatasetList.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="DatasetNode.h">
+      <Filter>來源檔案</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DataSetTest.txt">
+      <Filter>來源檔案</Filter>
+    </Text>
   </ItemGroup>
 </Project>
