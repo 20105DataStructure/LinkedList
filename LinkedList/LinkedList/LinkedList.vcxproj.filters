@@ -23,16 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DatasetList.h">
-      <Filter>來源檔案</Filter>
-    </ClInclude>
     <ClInclude Include="DatasetNode.h">
-      <Filter>來源檔案</Filter>
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DatasetList.h">
+      <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="DataSetTest.txt">
-      <Filter>來源檔案</Filter>
+      <Filter>資源檔</Filter>
     </Text>
   </ItemGroup>
 </Project>

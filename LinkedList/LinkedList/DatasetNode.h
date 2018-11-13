@@ -10,6 +10,7 @@ public:
 	int runtimeMinutes;
 	string* genres;
 	DatasetNode* next;
+
 public:
 
 
