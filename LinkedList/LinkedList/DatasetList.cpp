@@ -7,6 +7,10 @@ DatasetList::DatasetList() {
 	head = NULL;
 }
 
+bool DatasetList::isEmpty() {
+	return head == NULL ? true : false;
+}
+
 void DatasetList::Insertion() {
 
 }
@@ -21,5 +25,5 @@ DatasetList DatasetList::Searching() {
 
 int DatasetList::Statistical() {
 
-}
-*/
+}*/
+

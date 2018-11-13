@@ -5,6 +5,7 @@ public:
 	DatasetNode* head;
 public:
 	DatasetList();
+	bool isEmpty();
 	void Insertion();
 	void Deletion();
 	DatasetList Searching();
