@@ -1,4 +1,3 @@
-#include "DatasetNode.h"
 #include "DatasetList.h"
 #include <algorithm>
 #include <string>
@@ -30,7 +29,7 @@ int main()
 		size_t n = count(Genres.begin(), Genres.end(), ',');
 		if (n > 0) {
 			pos1 = Genres.find("\"") + 1;
-			for (; i < n;i++) {
+			for (; i < (signed)n;i++) {
 				pos2 = Genres.find(",", pos1);
 				genres[i] = Genres.substr(pos1, pos2 - pos1);
 				pos1 = pos2 + 1;
@@ -46,6 +45,7 @@ int main()
 
 		List.Insertion(tconst, titleType, peimaryTitle, startYear, runtimeMinutes, genres);
 	}
+	List.PrintList();
 
 	system("pause");
 	return 0;
