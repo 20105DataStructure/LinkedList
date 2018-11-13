@@ -22,7 +22,7 @@ void DatasetList::PrintList() {
 	}
 }
 
-void DatasetList::Insertion(string tconst, string titleType,string peimaryTitle,int startYear,string runtimeMinutes,string *genres) {
+void DatasetList::Insertion(string tconst, string titleType,string peimaryTitle,int startYear,string runtimeMinutes,string* genres) {
 
 	DatasetNode *newNode = new DatasetNode(tconst, titleType, peimaryTitle, startYear, runtimeMinutes, genres);
 	
@@ -34,12 +34,7 @@ void DatasetList::Insertion(string tconst, string titleType,string peimaryTitle,
 		DatasetNode *currNode = head;
 		for (; currNode->next; currNode = currNode->next);  //moving currNode point at the last node
 		currNode->next = newNode;
-		
-		for (int j = 0; j < 3; j++) {
-			cout << currNode->next->genres[j] << " ";
-		}
 	}		
-	
 }
 /*
 void DatasetList::Deletion() {
