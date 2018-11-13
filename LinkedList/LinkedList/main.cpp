@@ -12,7 +12,7 @@ int main()
 	string titleType;
 	string peimaryTitle;
 	int startYear;
-	int runtimeMinutes;
+	string runtimeMinutes;
 	string genres;
 
 	ifstream file("DataSetTest.txt");
@@ -21,14 +21,14 @@ int main()
 		getline(file, titleType, '\t');
 		getline(file, peimaryTitle,'\t');
 		file >> startYear >> runtimeMinutes;
-		getline(file, genres, '\t');
+		getline(file, genres);
 
-		cout << tconst << '\t' << titleType << '\t' << peimaryTitle << '\t' << startYear << '\t';
-		if (runtimeMinutes == 0)
+		cout << tconst << ' ' << titleType << ' ' << peimaryTitle << ' ' << startYear << ' ';
+		if (runtimeMinutes[1] = 'N')
 			cout << "\\N";
 		else
 			cout << runtimeMinutes;
-		cout << '\t' << genres << endl;
+		cout << ' ' << genres << endl;
 		if(file.eof())
 			file.close();
 	}
