@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 #include "DatasetList.h"
 
 using namespace std;
@@ -11,7 +11,11 @@ bool DatasetList::isEmpty() {
 	return head == NULL ? true : false;
 }
 
-void DatasetList::Insertion() {
+void DatasetList::PrintList() {
+
+}
+
+void DatasetList::Insertion(string tconst, string titleType,string peimaryTitle,int startYear,string runtimeMinutes,string *genres) {
 
 }
 
@@ -25,5 +29,5 @@ DatasetList DatasetList::Searching() {
 
 int DatasetList::Statistical() {
 
-}*/
+}
 
