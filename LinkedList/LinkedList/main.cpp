@@ -3,25 +3,30 @@
 #include <string>
 #include <iostream>
 #include <fstream> 
+#include <Windows.h>
+#include <time.h>
 
 using namespace std;
+
+
 
 int main()
 {	
 	DatasetList List;
 	string tconst;
 	string titleType;
-	string peimaryTitle;
+	string primaryTitle;
 	int startYear;
 	string runtimeMinutes;
 	string Genres;
 
 	ifstream file("DataSetTest.txt");
+
 	while (file.good()) {
 		string *genres = new string[3];
 		getline(file, tconst, '\t');
 		getline(file, titleType, '\t');
-		getline(file, peimaryTitle,'\t');
+		getline(file, primaryTitle,'\t');
 		file >> startYear >> runtimeMinutes;
 		getline(file, Genres);
 
@@ -37,11 +42,20 @@ int main()
 		}
 		pos2 = Genres.find("\"", pos1);
 		genres[i] = Genres.substr(pos1, pos2 - pos1);
-		List.Insertion(tconst, titleType, peimaryTitle, startYear, runtimeMinutes, genres);
+		List.Insertion(tconst, titleType, primaryTitle, startYear, runtimeMinutes, genres);
 
 		if(file.eof())
 			file.close();
+
+
 	}
+
+	List.PrintList();
+
+	
+	//Test Deletion()
+	cout << "\n";
+	List.Deletion();
 	List.PrintList();
 
 	system("pause");
