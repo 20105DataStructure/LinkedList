@@ -36,10 +36,10 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 	}		
 }
 
-/*void DatasetList::Deletion() {
+void DatasetList::Deletion() {
 
 	int dataType;
-	cout << "Which type of attribute you want to search?" << endl
+	cout << "Which type of attribute you want to delete?" << endl
 		<< "1) Code of the title" << endl
 		<< "2) Type of the title" << endl
 		<< "3) The Title" << endl
@@ -107,10 +107,38 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 			break;
 		}
 		case 3: {
-			//primaryTitle
+			if (!isEmpty()) {
+				string temp;
+				cout << "What you want to delete ? " << endl;
+				if (cin.peek() == '\n' || cin.peek() == '\r') {
+					cin.get();
+				}
+				getline(cin, temp);
 
+				for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
+					if (currNode->primaryTitle == temp) {
+						if (currNode) {
+							if (prevNode == NULL)
+								head = currNode->next;
+							else
+								prevNode->next = currNode->next;
+							DatasetNode* rubbish = currNode;
+							currNode = currNode->next;
+							delete rubbish;
+							flag = true;
+						}
+					}
+					else {
+						prevNode = currNode;
+						currNode = currNode->next;
+					}
+				}
+			}
+			else {
+				cout << "The data is empty!" << endl;
+			}
 			break;
-		}
+		}		
 		case 4: {
 			if (!isEmpty()) {
 				int temp;
@@ -171,8 +199,79 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 			}
 			break;
 		}
-		case 6:{
-			//array
+		case 6: {
+			string* temp = new string[3];
+			cout << "Please enter the GENRES(At most three) you want to search: " << endl
+				<< "The first Genre (Enter \"null\" if don't have): ";
+			cin >> temp[0];
+			if (temp[0] != "null") {
+				cout << "The second Genre (Enter \"null\" if don't have any more): ";
+				cin >> temp[1];
+				if (temp[1] != "null") {
+					cout << "The thrid Genre (Enter \"null\" if don't have any more): ";
+					cin >> temp[2];
+				}
+			}
+			else {
+				temp[0] = "\\N"; 
+			}
+			bool* arrayflag = new bool[3];
+			for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
+				for (int i = 0; i < 3; i++) {
+					arrayflag[i] = true;
+				}
+				if (temp[0] == "\\N") {
+					/////////////////////////////
+						if (currNode->genres[0] == temp[0]) {
+							if (currNode) {
+								if (prevNode == NULL)
+									head = currNode->next;
+								else
+									prevNode->next = currNode->next;
+								DatasetNode* rubbish = currNode;
+								currNode = currNode->next;
+								delete rubbish;
+								flag = true;
+							}
+						}
+						else {
+							prevNode = currNode;
+							currNode = currNode->next;
+						}
+					////////////////////////////
+				}
+				else {
+					for (int i = 0; i < 3 && (temp[i] != "null"); i++) {
+						bool tempflag = false;
+						for (int j = 0; j < 3 && (currNode->genres[j] != " "); j++) {
+							if (currNode->genres[j] == temp[i])
+								tempflag = true;
+						}
+						if (!tempflag) {
+							arrayflag[i] = tempflag;
+						}
+					}
+					if (arrayflag[0] && arrayflag[1] && arrayflag[2]){
+						///////////////////////////		
+						if (currNode) {
+							if (prevNode == NULL)
+								head = currNode->next;
+							else
+								prevNode->next = currNode->next;
+							DatasetNode* rubbish = currNode;
+							currNode = currNode->next;
+							delete rubbish;
+							flag = true;
+						}	
+						///////////////////////////
+					}
+					else {
+							prevNode = currNode;
+							currNode = currNode->next;
+						}
+				}
+			}
+			flag = true;
 			break;
 		}
 	}
@@ -182,7 +281,7 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 		cout << "Data not found!" << endl;
 	
 
-}*/
+}
 
 DatasetList DatasetList::Searching() {
 	DatasetList tempList;
