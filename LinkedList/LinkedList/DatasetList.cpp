@@ -221,7 +221,6 @@ void DatasetList::Deletion() {
 					arrayflag[i] = true;
 				}
 				if (temp[0] == "\\N") {
-					/////////////////////////////
 						if (currNode->genres[0] == temp[0]) {
 							if (currNode) {
 								if (prevNode == NULL)
@@ -238,7 +237,6 @@ void DatasetList::Deletion() {
 							prevNode = currNode;
 							currNode = currNode->next;
 						}
-					////////////////////////////
 				}
 				else {
 					for (int i = 0; i < 3 && (temp[i] != "null"); i++) {
@@ -252,7 +250,6 @@ void DatasetList::Deletion() {
 						}
 					}
 					if (arrayflag[0] && arrayflag[1] && arrayflag[2]){
-						///////////////////////////		
 						if (currNode) {
 							if (prevNode == NULL)
 								head = currNode->next;
@@ -262,8 +259,7 @@ void DatasetList::Deletion() {
 							currNode = currNode->next;
 							delete rubbish;
 							flag = true;
-						}	
-						///////////////////////////
+						}
 					}
 					else {
 							prevNode = currNode;
