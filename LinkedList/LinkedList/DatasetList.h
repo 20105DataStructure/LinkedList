@@ -10,5 +10,5 @@ public:
 	void Insertion(string tconst, string titleType, string peimaryTitle, int startYear, string runtimeMinutes, string* genres);
 	void Deletion();
 	DatasetList Searching();
-	//int Statistical();
+	int Statistical();
 };
