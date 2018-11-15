@@ -11,7 +11,7 @@ int main()
 	DatasetList List;
 	string tconst;
 	string titleType;
-	string peimaryTitle;
+	string primaryTitle;
 	int startYear;
 	string runtimeMinutes;
 	string Genres;
@@ -21,7 +21,7 @@ int main()
 		string *genres = new string[3];
 		getline(file, tconst, '\t');
 		getline(file, titleType, '\t');
-		getline(file, peimaryTitle,'\t');
+		getline(file, primaryTitle,'\t');
 		file >> startYear >> runtimeMinutes;
 		getline(file, Genres);
 
@@ -37,13 +37,14 @@ int main()
 		}
 		pos2 = Genres.find("\"", pos1);
 		genres[i] = Genres.substr(pos1, pos2 - pos1);
-		List.Insertion(tconst, titleType, peimaryTitle, startYear, runtimeMinutes, genres);
+		List.Insertion(tconst, titleType, primaryTitle, startYear, runtimeMinutes, genres);
 
 		if(file.eof())
 			file.close();
 	}
 	List.PrintList();
-
+	DatasetList SearchList = List.Searching();
+	SearchList.PrintList();
 	system("pause");
 	return 0;
 }

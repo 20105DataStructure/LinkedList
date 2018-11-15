@@ -4,7 +4,7 @@ class DatasetNode {
 public:
 	string tconst;
 	string titleType;
-	string peimaryTitle;
+	string primaryTitle;
 	int startYear;
 	string runtimeMinutes;
 	string* genres;
@@ -14,7 +14,7 @@ public:
 	DatasetNode(string code, string Type, string Title, int YYYY, string mins, string* genres) {
 		this->tconst = code;
 		this->titleType = Type;
-		this->peimaryTitle = Title;
+		this->primaryTitle = Title;
 		this->startYear = YYYY;
 		this->runtimeMinutes = mins;
 		this->genres = genres;
