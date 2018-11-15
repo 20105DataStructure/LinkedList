@@ -36,10 +36,10 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 	}		
 }
 
-void DatasetList::Deletion() {
+/*void DatasetList::Deletion() {
 
 	int dataType;
-	cout << "Which type of attribute you want to delete?" << endl
+	cout << "Which type of attribute you want to search?" << endl
 		<< "1) Code of the title" << endl
 		<< "2) Type of the title" << endl
 		<< "3) The Title" << endl
@@ -107,36 +107,8 @@ void DatasetList::Deletion() {
 			break;
 		}
 		case 3: {
-			if (!isEmpty()) {
-				string temp;
-				cout << "What you want to delete ? " << endl;
-				if (cin.peek() == '\n' || cin.peek() == '\r') {
-					cin.get();
-				}
-				getline(cin, temp);
+			//primaryTitle
 
-				for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
-					if (currNode->primaryTitle == temp) {
-						if (currNode) {
-							if (prevNode == NULL)
-								head = currNode->next;
-							else
-								prevNode->next = currNode->next;
-							DatasetNode* rubbish = currNode;
-							currNode = currNode->next;
-							delete rubbish;
-							flag = true;
-						}
-					}
-					else {
-						prevNode = currNode;
-						currNode = currNode->next;
-					}
-				}
-			}
-			else {
-				cout << "The data is empty!" << endl;
-			}
 			break;
 		}
 		case 4: {
@@ -210,12 +182,10 @@ void DatasetList::Deletion() {
 		cout << "Data not found!" << endl;
 	
 
-}
+}*/
 
 DatasetList DatasetList::Searching() {
 	DatasetList tempList;
-	//int i = 1;
-	//tempList.Insertion(i, true, currNode->itemName, currNode->price, currNode->qty);
 	cout << "Which type of attribute you want to search?" << endl
 		<< "1) Code of the title" << endl
 		<< "2) Type of the title" << endl
@@ -307,17 +277,29 @@ DatasetList DatasetList::Searching() {
 					cout << "The thrid Genre (Enter \"null\" if don't have any more): ";
 					cin >> ngenres[2];
 				}
-				ngenres[0] = "\\N";
 			}
-			bool arrayflag = new bool[3];
-			arrayflag = { true };
+			else 
+				ngenres[0] = "\\N";
+			bool* arrayflag = new bool[3];
 			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				for (int i = 0; i < 3; i++)
+					arrayflag[i] = true;
 				if (ngenres[0] == "\\N") {
 					if (currNode->genres[0] == "\\N")
 						tempList.Insertion(currNode->tconst, currNode->titleType, currNode->primaryTitle, currNode->startYear, currNode->runtimeMinutes, currNode->genres);
 				}
 				else {
-					for (int i = 0; i < 3 && (ngenres[i] != "null"); i++);
+					for (int i = 0; i < 3 && (ngenres[i] != "null"); i++) {
+						bool tempflag = false;
+						for (int j = 0; j < 3 && (currNode->genres[j] != " "); j++) {
+							if (currNode->genres[j] == ngenres[i]) 
+								tempflag = true;
+						}
+						if (!tempflag)
+							arrayflag[i] = tempflag;
+					}
+					if(arrayflag[0] && arrayflag[1] && arrayflag[2])
+						tempList.Insertion(currNode->tconst, currNode->titleType, currNode->primaryTitle, currNode->startYear, currNode->runtimeMinutes, currNode->genres);
 				}
 			}
 			flag = !flag;
@@ -327,8 +309,6 @@ DatasetList DatasetList::Searching() {
 			cout << "We don't have this choice ! Please input again !" << endl;
 		}
 	}
-
-
 	return tempList;
 }
 

@@ -24,6 +24,8 @@ int main()
 
 	while (file.good()) {
 		string *genres = new string[3];
+		for (int i = 0; i < 3; i++)
+			genres[i] = " ";
 		getline(file, tconst, '\t');
 		getline(file, titleType, '\t');
 		getline(file, primaryTitle,'\t');
@@ -54,11 +56,14 @@ int main()
 
 	
 	//Test Deletion()
-	cout << "\n";
-	List.Deletion();
-	List.PrintList();
-	//DatasetList SearchList = List.Searching();
-	//SearchList.PrintList();
+	//cout << "\n";
+//	List.Deletion();
+	//List.PrintList();
+	DatasetList SearchList = List.Searching();
+	if (!SearchList.isEmpty())
+		SearchList.PrintList();
+	else
+		cout << "No record has been search !" << endl;
 	system("pause");
 	return 0;
 }
