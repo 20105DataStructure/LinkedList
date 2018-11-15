@@ -3,8 +3,12 @@
 #include <string>
 #include <iostream>
 #include <fstream> 
+#include <Windows.h>
+#include <time.h>
 
 using namespace std;
+
+
 
 int main()
 {	
@@ -17,6 +21,7 @@ int main()
 	string Genres;
 
 	ifstream file("DataSetTest.txt");
+
 	while (file.good()) {
 		string *genres = new string[3];
 		getline(file, tconst, '\t');
@@ -41,7 +46,16 @@ int main()
 
 		if(file.eof())
 			file.close();
+
+
 	}
+
+	List.PrintList();
+
+	
+	//Test Deletion()
+	cout << "\n";
+	List.Deletion();
 	List.PrintList();
 	DatasetList SearchList = List.Searching();
 	SearchList.PrintList();
