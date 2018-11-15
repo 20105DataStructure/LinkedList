@@ -57,8 +57,8 @@ int main()
 	cout << "\n";
 	List.Deletion();
 	List.PrintList();
-	DatasetList SearchList = List.Searching();
-	SearchList.PrintList();
+	//DatasetList SearchList = List.Searching();
+	//SearchList.PrintList();
 	system("pause");
 	return 0;
 }

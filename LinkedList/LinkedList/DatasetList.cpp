@@ -39,7 +39,7 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 void DatasetList::Deletion() {
 
 	int dataType;
-	cout << "Which type of attribute you want to search?" << endl
+	cout << "Which type of attribute you want to delete?" << endl
 		<< "1) Code of the title" << endl
 		<< "2) Type of the title" << endl
 		<< "3) The Title" << endl
@@ -107,8 +107,36 @@ void DatasetList::Deletion() {
 			break;
 		}
 		case 3: {
-			//primaryTitle
+			if (!isEmpty()) {
+				string temp;
+				cout << "What you want to delete ? " << endl;
+				if (cin.peek() == '\n' || cin.peek() == '\r') {
+					cin.get();
+				}
+				getline(cin, temp);
 
+				for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
+					if (currNode->primaryTitle == temp) {
+						if (currNode) {
+							if (prevNode == NULL)
+								head = currNode->next;
+							else
+								prevNode->next = currNode->next;
+							DatasetNode* rubbish = currNode;
+							currNode = currNode->next;
+							delete rubbish;
+							flag = true;
+						}
+					}
+					else {
+						prevNode = currNode;
+						currNode = currNode->next;
+					}
+				}
+			}
+			else {
+				cout << "The data is empty!" << endl;
+			}
 			break;
 		}
 		case 4: {
@@ -183,7 +211,7 @@ void DatasetList::Deletion() {
 	
 
 }
-/*
+
 DatasetList DatasetList::Searching() {
 	DatasetList tempList;
 	//int i = 1;
