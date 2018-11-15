@@ -172,6 +172,7 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 			break;
 		}
 		case 6:{
+			//array
 			break;
 		}
 	}
