@@ -112,10 +112,64 @@ void DatasetList::Deletion() {
 
 			break;
 		}
-		case 4:{
+		case 4: {
+			if (!isEmpty()) {
+				int temp;
+				cout << "What you want to delete ? " << endl;
+				cin >> temp;
+
+				for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
+					if (currNode->startYear == temp) {
+						if (currNode) {
+							if (prevNode == NULL)
+								head = currNode->next;
+							else
+								prevNode->next = currNode->next;
+							DatasetNode* rubbish = currNode;
+							currNode = currNode->next;
+							delete rubbish;
+							flag = true;
+						}
+					}
+					else {
+						prevNode = currNode;
+						currNode = currNode->next;
+					}
+				}
+			}
+			else {
+				cout << "The data is empty!" << endl;
+			}
 			break;
 		}
 		case 5: {
+			if (!isEmpty()) {
+				string temp;
+				cout << "What you want to delete ? " << endl;
+				cin >> temp;
+
+				for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
+					if (currNode->runtimeMinutes == temp) {
+						if (currNode) {
+							if (prevNode == NULL)
+								head = currNode->next;
+							else
+								prevNode->next = currNode->next;
+							DatasetNode* rubbish = currNode;
+							currNode = currNode->next;
+							delete rubbish;
+							flag = true;
+						}
+					}
+					else {
+						prevNode = currNode;
+						currNode = currNode->next;
+					}
+				}
+			}
+			else {
+				cout << "The data is empty!" << endl;
+			}
 			break;
 		}
 		case 6:{
