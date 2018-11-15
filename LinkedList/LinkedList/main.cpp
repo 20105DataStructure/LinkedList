@@ -59,11 +59,12 @@ int main()
 	//cout << "\n";
 //	List.Deletion();
 	//List.PrintList();
-	DatasetList SearchList = List.Searching();
+	/*DatasetList SearchList = List.Searching();
 	if (!SearchList.isEmpty())
 		SearchList.PrintList();
 	else
-		cout << "No record has been search !" << endl;
+		cout << "No record has been search !" << endl;*/
+	cout << List.Statistical() << endl;
 	system("pause");
 	return 0;
 }

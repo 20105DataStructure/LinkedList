@@ -312,7 +312,131 @@ DatasetList DatasetList::Searching() {
 	return tempList;
 }
 
-/*int DatasetList::Statistical() {
-
-}*/
+int DatasetList::Statistical() {
+	int count = 0;
+	cout << "Which type of attribute you want to be statistical?" << endl
+		<< "1) Code of the title" << endl
+		<< "2) Type of the title" << endl
+		<< "3) The Title" << endl
+		<< "4) Release year of the title" << endl
+		<< "5) Runtime of the title (in minutes)" << endl
+		<< "6) Genres of the title" << endl;
+	int choice; bool flag = false;
+	while (!flag) {
+		cin >> choice;
+		switch (choice) {
+		case 1:
+		{
+			cout << "Please enter the CODE you want to be statistical: ";
+			string code;
+			cin >> code;
+			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				if (currNode->tconst == code) {
+					count++;
+					break;
+				}
+			}
+			flag = !flag;
+			break;
+		}
+		case 2:
+		{
+			cout << "Please enter the TYPE you want be statistical: ";
+			string type;
+			cin >> type;
+			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				if (currNode->titleType == type)
+					count++;
+			}
+			flag = !flag;
+			break;
+		}
+		case 3:
+		{
+			string title;
+			cout << "Please enter the TITLE you want be statistical: ";
+			if (cin.peek() == '\n' || cin.peek() == '\r') {
+				cin.get();
+			}
+			getline(cin, title);
+			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				if (currNode->primaryTitle == title)
+					count++;
+			}
+			flag = !flag;
+			break;
+		}
+		case 4:
+		{
+			cout << "Please enter the YEAR you want be statistical: ";
+			int year;
+			cin >> year;
+			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				if (currNode->startYear == year)
+					count++;
+			}
+			flag = !flag;
+			break;
+		}
+		case 5:
+		{
+			cout << "Please enter the RUNTIME(in Minutes) you want to be statistical (Enter \"null\" if you don't know): ";
+			string runtime;
+			cin >> runtime;
+			if (runtime == "null")
+				runtime = "\\N";
+			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				if (currNode->runtimeMinutes == runtime)
+					count++;
+			}
+			flag = !flag;
+			break;
+		}
+		case 6:
+		{
+			string* ngenres = new string[3];
+			cout << "Please enter the GENRES(At most three) you want to be statistical: " << endl
+				<< "The first Genre (Enter \"null\" if don't have): ";
+			cin >> ngenres[0];
+			if (ngenres[0] != "null") {
+				cout << "The second Genre (Enter \"null\" if don't have any more): ";
+				cin >> ngenres[1];
+				if (ngenres[1] != "null") {
+					cout << "The thrid Genre (Enter \"null\" if don't have any more): ";
+					cin >> ngenres[2];
+				}
+			}
+			else
+				ngenres[0] = "\\N";
+			bool* arrayflag = new bool[3];
+			for (DatasetNode *currNode = head; currNode; currNode = currNode->next) {
+				for (int i = 0; i < 3; i++)
+					arrayflag[i] = true;
+				if (ngenres[0] == "\\N") {
+					if (currNode->genres[0] == "\\N")
+						count++;
+				}
+				else {
+					for (int i = 0; i < 3 && (ngenres[i] != "null"); i++) {
+						bool tempflag = false;
+						for (int j = 0; j < 3 && (currNode->genres[j] != " "); j++) {
+							if (currNode->genres[j] == ngenres[i])
+								tempflag = true;
+						}
+						if (!tempflag)
+							arrayflag[i] = tempflag;
+					}
+					if (arrayflag[0] && arrayflag[1] && arrayflag[2])
+						count++;
+				}
+			}
+			flag = !flag;
+			break;
+		}
+		default:
+			cout << "We don't have this choice ! Please input again !" << endl;
+		}
+	}
+	return count;
+}
 
