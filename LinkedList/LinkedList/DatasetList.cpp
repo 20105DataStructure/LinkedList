@@ -33,20 +33,22 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 }
 
 void DatasetList::Deletion() {
-	int dataType;
-	cout << "Which type of attribute you want to delete?" << endl
-		<< "1) Code of the title" << endl
-		<< "2) Type of the title" << endl
-		<< "3) The Title" << endl
-		<< "4) Release year of the title" << endl
-		<< "5) Runtime of the title (in minutes)" << endl
-		<< "6) Genres of the title" << endl;
-	cin >> dataType;
-	cout << "\n";
+	string dataType;	
 	bool flag = false;
-
-	switch(dataType){
-		case 1:{
+	bool tf = false;
+	while (!tf) {
+		cout << "Which type of attribute you want to delete?" << endl
+			 << "1) Code of the title" << endl
+			 << "2) Type of the title" << endl
+			 << "3) The Title" << endl
+			 << "4) Release year of the title" << endl
+			 << "5) Runtime of the title (in minutes)" << endl
+		 	 << "6) Genres of the title" << endl
+			 << "Please input the number (1-6) : ";
+		cin >> dataType;
+		switch (dataType[0]) {
+		case '1': {
+			tf = true;
 			if (!isEmpty()) {
 				string temp;
 				cout << "What you want to delete ? " << endl;
@@ -71,18 +73,19 @@ void DatasetList::Deletion() {
 			}
 			break;
 		}
-		case 2: {
+		case '2': {
+			tf = true;
 			if (!isEmpty()) {
 				string temp;
 				cout << "What you want to delete ? " << endl;
 				cin >> temp;
-				
+
 				for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
 					if (currNode->titleType == temp) {
 						if (currNode) {
-							if (prevNode == NULL) 
+							if (prevNode == NULL)
 								head = currNode->next;
-							else                    
+							else
 								prevNode->next = currNode->next;
 							DatasetNode* rubbish = currNode;
 							currNode = currNode->next;
@@ -101,7 +104,8 @@ void DatasetList::Deletion() {
 			}
 			break;
 		}
-		case 3: {
+		case '3': {
+			tf = true;
 			if (!isEmpty()) {
 				string temp;
 				cout << "What you want to delete ? " << endl;
@@ -133,8 +137,9 @@ void DatasetList::Deletion() {
 				cout << "The data is empty!" << endl;
 			}
 			break;
-		}		
-		case 4: {
+		}
+		case '4': {
+			tf = true;
 			if (!isEmpty()) {
 				int temp;
 				cout << "What you want to delete ? " << endl;
@@ -164,7 +169,8 @@ void DatasetList::Deletion() {
 			}
 			break;
 		}
-		case 5: {
+		case '5': {
+			tf = true;
 			if (!isEmpty()) {
 				string temp;
 				cout << "What you want to delete ? " << endl;
@@ -194,7 +200,8 @@ void DatasetList::Deletion() {
 			}
 			break;
 		}
-		case 6: {
+		case '6': {
+			tf = true;
 			string* temp = new string[3];
 			cout << "Please enter the GENRES(At most three) you want to search: " << endl
 				<< "The first Genre (Enter \"null\" if don't have): ";
@@ -208,7 +215,7 @@ void DatasetList::Deletion() {
 				}
 			}
 			else {
-				temp[0] = "\\N"; 
+				temp[0] = "\\N";
 			}
 			bool* arrayflag = new bool[3];
 			for (DatasetNode *currNode = head, *prevNode = NULL; currNode;) {
@@ -216,35 +223,7 @@ void DatasetList::Deletion() {
 					arrayflag[i] = true;
 				}
 				if (temp[0] == "\\N") {
-						if (currNode->genres[0] == temp[0]) {
-							if (currNode) {
-								if (prevNode == NULL)
-									head = currNode->next;
-								else
-									prevNode->next = currNode->next;
-								DatasetNode* rubbish = currNode;
-								currNode = currNode->next;
-								delete rubbish;
-								flag = true;
-							}
-						}
-						else {
-							prevNode = currNode;
-							currNode = currNode->next;
-						}
-				}
-				else {
-					for (int i = 0; i < 3 && (temp[i] != "null"); i++) {
-						bool tempflag = false;
-						for (int j = 0; j < 3 && (currNode->genres[j] != " "); j++) {
-							if (currNode->genres[j] == temp[i])
-								tempflag = true;
-						}
-						if (!tempflag) {
-							arrayflag[i] = tempflag;
-						}
-					}
-					if (arrayflag[0] && arrayflag[1] && arrayflag[2]){
+					if (currNode->genres[0] == temp[0]) {
 						if (currNode) {
 							if (prevNode == NULL)
 								head = currNode->next;
@@ -257,13 +236,47 @@ void DatasetList::Deletion() {
 						}
 					}
 					else {
-							prevNode = currNode;
-							currNode = currNode->next;
+						prevNode = currNode;
+						currNode = currNode->next;
+					}
+				}
+				else {
+					for (int i = 0; i < 3 && (temp[i] != "null"); i++) {
+						bool tempflag = false;
+						for (int j = 0; j < 3 && (currNode->genres[j] != " "); j++) {
+							if (currNode->genres[j] == temp[i])
+								tempflag = true;
 						}
+						if (!tempflag) {
+							arrayflag[i] = tempflag;
+						}
+					}
+					if (arrayflag[0] && arrayflag[1] && arrayflag[2]) {
+						if (currNode) {
+							if (prevNode == NULL)
+								head = currNode->next;
+							else
+								prevNode->next = currNode->next;
+							DatasetNode* rubbish = currNode;
+							currNode = currNode->next;
+							delete rubbish;
+							flag = true;
+						}
+					}
+					else {
+						prevNode = currNode;
+						currNode = currNode->next;
+					}
 				}
 			}
 			flag = true;
 			break;
+		}
+		default: {
+			cout << "We don't have this choice ! Please input again !" << endl;
+			
+			break;
+		}
 		}
 	}
 	if (flag)
@@ -275,17 +288,18 @@ void DatasetList::Deletion() {
 DatasetList DatasetList::Searching() {
 	DatasetList tempList;
 	cout << "Which type of attribute you want to search?" << endl
-		<< "1) Code of the title" << endl
-		<< "2) Type of the title" << endl
-		<< "3) The Title" << endl
-		<< "4) Release year of the title" << endl
-		<< "5) Runtime of the title (in minutes)" << endl
-		<< "6) Genres of the title" << endl;
-	int choice; bool flag = false;
+		 << "1) Code of the title" << endl
+		 << "2) Type of the title" << endl
+		 << "3) The Title" << endl
+		 << "4) Release year of the title" << endl
+		 << "5) Runtime of the title (in minutes)" << endl
+		 << "6) Genres of the title" << endl
+		 << "Please input the number (1-6) : ";
+	string choice; bool flag = false;
 	while (!flag) {
 		cin >> choice;
-		switch (choice) {
-		case 1:
+		switch (choice[0]) {
+		case '1':
 		{
 			cout << "Please enter the CODE you want to search: ";
 			string code;
@@ -299,7 +313,7 @@ DatasetList DatasetList::Searching() {
 			flag = !flag;
 			break;
 		}
-		case 2:
+		case '2':
 		{
 			cout << "Please enter the TYPE you want to search: ";
 			string type;
@@ -311,7 +325,7 @@ DatasetList DatasetList::Searching() {
 			flag = !flag;
 			break;
 		}
-		case 3:
+		case '3':
 		{
 			string title;
 			cout << "Please enter the TITLE you want to search: ";
@@ -326,7 +340,7 @@ DatasetList DatasetList::Searching() {
 			flag = !flag;
 			break;
 		}
-		case 4:
+		case '4':
 		{
 			cout << "Please enter the YEAR you want to search: ";
 			int year;
@@ -338,7 +352,7 @@ DatasetList DatasetList::Searching() {
 			flag = !flag;
 			break;
 		}
-		case 5:
+		case '5':
 		{
 			cout << "Please enter the RUNTIME(in Minutes) you want to search (Enter \"null\" if you don't know): ";
 			string runtime;
@@ -352,7 +366,7 @@ DatasetList DatasetList::Searching() {
 			flag = !flag;
 			break;
 		}
-		case 6:
+		case '6':
 		{
 			string* ngenres = new string[3];
 			cout << "Please enter the GENRES(At most three) you want to search: " << endl
@@ -403,17 +417,18 @@ DatasetList DatasetList::Searching() {
 int DatasetList::Statistical() {
 	int count = 0;
 	cout << "Which type of attribute you want to be statistical?" << endl
-		<< "1) Code of the title" << endl
-		<< "2) Type of the title" << endl
-		<< "3) The Title" << endl
-		<< "4) Release year of the title" << endl
-		<< "5) Runtime of the title (in minutes)" << endl
-		<< "6) Genres of the title" << endl;
-	int choice; bool flag = false;
+		 << "1) Code of the title" << endl
+		 << "2) Type of the title" << endl
+		 << "3) The Title" << endl
+		 << "4) Release year of the title" << endl
+		 << "5) Runtime of the title (in minutes)" << endl
+		 << "6) Genres of the title" << endl
+		 << "Please input the number (1-6) : ";
+	string choice; bool flag = false;
 	while (!flag) {
 		cin >> choice;
-		switch (choice) {
-		case 1:
+		switch (choice[0]) {
+		case '1':
 		{
 			cout << "Please enter the CODE you want to be statistical: ";
 			string code;
@@ -427,7 +442,7 @@ int DatasetList::Statistical() {
 			flag = !flag;
 			break;
 		}
-		case 2:
+		case '2':
 		{
 			cout << "Please enter the TYPE you want be statistical: ";
 			string type;
@@ -439,7 +454,7 @@ int DatasetList::Statistical() {
 			flag = !flag;
 			break;
 		}
-		case 3:
+		case '3':
 		{
 			string title;
 			cout << "Please enter the TITLE you want be statistical: ";
@@ -454,7 +469,7 @@ int DatasetList::Statistical() {
 			flag = !flag;
 			break;
 		}
-		case 4:
+		case '4':
 		{
 			cout << "Please enter the YEAR you want be statistical: ";
 			int year;
@@ -466,7 +481,7 @@ int DatasetList::Statistical() {
 			flag = !flag;
 			break;
 		}
-		case 5:
+		case '5':
 		{
 			cout << "Please enter the RUNTIME(in Minutes) you want to be statistical (Enter \"null\" if you don't know): ";
 			string runtime;
@@ -480,7 +495,7 @@ int DatasetList::Statistical() {
 			flag = !flag;
 			break;
 		}
-		case 6:
+		case '6':
 		{
 			string* ngenres = new string[3];
 			cout << "Please enter the GENRES(At most three) you want to be statistical: " << endl
