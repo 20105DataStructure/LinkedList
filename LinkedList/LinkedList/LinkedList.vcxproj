@@ -27,13 +27,20 @@
     <ClInclude Include="DatasetNode.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="DataSetTest.txt" />
+    <Text Include="DataSet1_1000.txt" />
+    <Text Include="DataSet2_2000.txt" />
+    <Text Include="DataSet3_5000.txt" />
+    <Text Include="DataSet4_10000.txt" />
+    <Text Include="DataSet5_50000.txt" />
+    <Text Include="DataSet6_100000.txt" />
+    <Text Include="DataSet7_300000.txt" />
+    <Text Include="DataSet8_FullDataSet.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{08C1F397-3D3C-4BC7-A038-85639E921F73}</ProjectGuid>
     <RootNamespace>LinkedList</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

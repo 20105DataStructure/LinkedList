@@ -46,6 +46,7 @@ void DatasetList::Deletion() {
 		 	 << "6) Genres of the title" << endl
 			 << "Please input the number (1-6) : ";
 		cin >> dataType;
+		cout << "\n";
 		switch (dataType[0]) {
 		case '1': {
 			tf = true;
@@ -287,17 +288,19 @@ void DatasetList::Deletion() {
 
 DatasetList DatasetList::Searching() {
 	DatasetList tempList;
-	cout << "Which type of attribute you want to search?" << endl
-		 << "1) Code of the title" << endl
-		 << "2) Type of the title" << endl
-		 << "3) The Title" << endl
-		 << "4) Release year of the title" << endl
-		 << "5) Runtime of the title (in minutes)" << endl
-		 << "6) Genres of the title" << endl
-		 << "Please input the number (1-6) : ";
+	
 	string choice; bool flag = false;
 	while (!flag) {
+		cout << "Which type of attribute you want to search?" << endl
+			 << "1) Code of the title" << endl
+			 << "2) Type of the title" << endl
+			 << "3) The Title" << endl
+			 << "4) Release year of the title" << endl
+			 << "5) Runtime of the title (in minutes)" << endl
+			 << "6) Genres of the title" << endl
+			 << "Please input the number (1-6) : ";
 		cin >> choice;
+		cout << "\n";
 		switch (choice[0]) {
 		case '1':
 		{
@@ -416,17 +419,19 @@ DatasetList DatasetList::Searching() {
 
 int DatasetList::Statistical() {
 	int count = 0;
-	cout << "Which type of attribute you want to be statistical?" << endl
-		 << "1) Code of the title" << endl
-		 << "2) Type of the title" << endl
-		 << "3) The Title" << endl
-		 << "4) Release year of the title" << endl
-		 << "5) Runtime of the title (in minutes)" << endl
-		 << "6) Genres of the title" << endl
-		 << "Please input the number (1-6) : ";
+	
 	string choice; bool flag = false;
 	while (!flag) {
+		cout << "Which type of attribute you want to be statistical?" << endl
+			 << "1) Code of the title" << endl
+			 << "2) Type of the title" << endl
+			 << "3) The Title" << endl
+			 << "4) Release year of the title" << endl
+			 << "5) Runtime of the title (in minutes)" << endl
+			 << "6) Genres of the title" << endl
+			 << "Please input the number (1-6) : ";
 		cin >> choice;
+		cout << "\n";
 		switch (choice[0]) {
 		case '1':
 		{
