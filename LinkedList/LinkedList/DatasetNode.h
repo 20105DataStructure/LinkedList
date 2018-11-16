@@ -1,5 +1,11 @@
+#include <algorithm>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include <stdio.h>
 using namespace std;
+
 class DatasetNode {
 public:
 	string tconst;

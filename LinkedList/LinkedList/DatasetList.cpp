@@ -1,8 +1,4 @@
-#include <iostream>
 #include "DatasetList.h"
-
-using namespace std;
-
 DatasetList::DatasetList() {
 	head = NULL;
 }
@@ -37,7 +33,6 @@ void DatasetList::Insertion(string tconst, string titleType,string primaryTitle,
 }
 
 void DatasetList::Deletion() {
-
 	int dataType;
 	cout << "Which type of attribute you want to delete?" << endl
 		<< "1) Code of the title" << endl
@@ -275,8 +270,6 @@ void DatasetList::Deletion() {
 		cout << "Data deleted!" << endl;
 	else
 		cout << "Data not found!" << endl;
-	
-
 }
 
 DatasetList DatasetList::Searching() {
